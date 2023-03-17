@@ -1,0 +1,8 @@
+SLEEP 3
+MOD4
+SLEEP 1
+TYPE notepad
+SLEEP 1
+RETURN
+SLEEP 1
+TYPE Hello World
