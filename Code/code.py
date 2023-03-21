@@ -5,6 +5,13 @@ from adafruit_hid.keycode import Keycode
 from adafruit_hid.mouse import Mouse
 import time
 
+import board
+import digitalio
+
+led = digitalio.DigitalInOut(board.LED)
+led.direction = digitalio.Direction.OUTPUT
+led.value = False
+
 # Set up the keyboard and mouse objects
 keyboard = Keyboard(usb_hid.devices)
 keyboard_layout = KeyboardLayoutUS(keyboard)
@@ -47,6 +54,7 @@ while program_counter < len(commands):
     elif command.startswith('REM'):
         # Do nothing for a comment
         pass
-
+    elif command.startswith("LED"):
+        led.value = not led.value
     # Increment the program counter
     program_counter += 1
