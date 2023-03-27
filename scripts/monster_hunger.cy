@@ -1,3 +1,4 @@
+SCREEN Monster Hunger
 DELAY 0.5
 MOD4
 SLEEP 1
@@ -17,13 +18,18 @@ TYPE Right Button: Sit there and hope it's friendly...
 RETURN
 TYPE Choose your action: 
 RETURN
-BJUMP 25
+BJUMP SHOOT
 TYPE You choose not to shoot, the eyes get larger and the growling louder. 
 RETURN
-TYPE Game Over. You were Eaten by the Monster
+SCREEN UR DED M8
+TYPE You were eaten by the Monster
 RETURN
-JUMP 27
+JUMP GAME_OVER
+LABEL SHOOT
+SCREEN BANG!
 TYPE You grab the gun and hit the monster dead between those bright red eyes. Fading, the eyes close and you live another day.
 RETURN
+LABEL GAME_OVER
 SCREEN Game Over
 TYPE Thanks for playing Monster Hunger 1.2
+SLEEP 5
