@@ -59,7 +59,11 @@ STATE = 0
 FILENAME = ""
 
 DELAY = 0
+
+VARS = {}
+
 while True:
+    VARS = {}
     if STATE == 0:
         files = []
         for f in os.listdir("./scripts"):
@@ -145,6 +149,20 @@ while True:
                     if line == "LABEL " + jump_target:
                         program_counter = target
                     target += 1
+                continue
+            elif command.startswith("SET"):
+                var = command[4:]
+                VARS[var] = True
+            elif command.startswith("VJUMP"):
+                var, jump_target = command[6:].split(" ")
+                if var in VARS:
+                    target = 0
+                    for line in commands:
+                        if line == "LABEL " + jump_target:
+                            program_counter = target
+                        target += 1
+                else:
+                    program_counter += 1
                 continue
             elif command.startswith("BJUMP"):
                 # Jump if left button is pressed, usually proceeded with a SCREEN command
