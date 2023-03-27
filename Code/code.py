@@ -58,6 +58,7 @@ program_counter = 0
 STATE = 0
 FILENAME = ""
 
+DELAY = 0
 while True:
     if STATE == 0:
         files = []
@@ -118,6 +119,8 @@ while True:
                 # Extract the sleep duration from the command and sleep for that amount of time
                 duration = float(command[6:])
                 time.sleep(duration)
+            elif command.startswith("DELAY"):
+                DELAY = float(command[6:])
             elif command == 'RETURN':
                 # Press the return key using the keyboard
                 keyboard.send(Keycode.ENTER)
@@ -134,6 +137,18 @@ while True:
                 line_number = int(command[5:])
                 program_counter = line_number
                 continue
+            elif command.startswith("BJUMP"):
+                # Jump if left button is pressed, usually proceeded with a SCREEN command
+                l = True
+                line_number = int(command[6:])
+                while l == True:
+                    if left_button.value:
+                        program_counter = line_number
+                        l == False
+                        continue
+                    elif right_button.value:
+                        l == False
+                    time.sleep(0.1)
             elif command.startswith('REM'):
                 # Do nothing for a comment
                 pass
@@ -143,5 +158,6 @@ while True:
                 top_text = command[7:]
 
             program_counter += 1
+            time.sleep(DELAY)
         STATE = 0
 
