@@ -1,4 +1,9 @@
 DELAY 0.5
+MOD4
+SLEEP 1
+TYPE notepad
+SLEEP 1
+RETURN
 SCREEN GO HUNT!
 TYPE You awaken in a dark cave, a pistol sits besides you looking to be locked and loaded.
 RETURN
@@ -12,12 +17,12 @@ TYPE Right Button: Sit there and hope it's friendly...
 RETURN
 TYPE Choose your action: 
 RETURN
-BJUMP 20
+BJUMP 25
 TYPE You choose not to shoot, the eyes get larger and the growling louder. 
 RETURN
 TYPE Game Over. You were Eaten by the Monster
 RETURN
-JUMP 22
+JUMP 27
 TYPE You grab the gun and hit the monster dead between those bright red eyes. Fading, the eyes close and you live another day.
 RETURN
 SCREEN Game Over
