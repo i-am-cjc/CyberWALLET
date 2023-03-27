@@ -38,10 +38,10 @@ led.direction = digitalio.Direction.OUTPUT
 led.value = False
 
 
-left_button = digitalio.DigitalInOut(board.GP14)
+left_button = digitalio.DigitalInOut(board.GP12)
 left_button.switch_to_input(pull=digitalio.Pull.DOWN)
 
-right_button = digitalio.DigitalInOut(board.GP15)
+right_button = digitalio.DigitalInOut(board.GP13)
 right_button.switch_to_input(pull=digitalio.Pull.DOWN)
 
 # Set up the keyboard and mouse objects
@@ -62,7 +62,7 @@ DELAY = 0
 while True:
     if STATE == 0:
         files = []
-        for f in os.listdir():
+        for f in os.listdir("./scripts"):
             if f.endswith('.cy'):
                 files.append(f)
         index = 0
@@ -89,7 +89,7 @@ while True:
             time.sleep(0.1)
     elif STATE == 1:
         # Read the list of commands from a text file
-        with open(FILENAME, 'r') as file:
+        with open("./scripts/" + FILENAME, 'r') as file:
             commands = file.read().splitlines()
         top_text = ""
 
@@ -144,11 +144,13 @@ while True:
                 while l == True:
                     if left_button.value:
                         program_counter = line_number
-                        l == False
+                        l = False
                         continue
                     elif right_button.value:
-                        l == False
+                        program_counter += 1
+                        l = False
                     time.sleep(0.1)
+                continue
             elif command.startswith('REM'):
                 # Do nothing for a comment
                 pass
