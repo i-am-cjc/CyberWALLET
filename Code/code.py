@@ -121,6 +121,11 @@ while True:
                 time.sleep(duration)
             elif command.startswith("DELAY"):
                 DELAY = float(command[6:])
+            elif command.startswith("RTYPE"):
+                text = command[6:]
+                keyboard_layout.write(text)
+                time.sleep(0.1)
+                keyboard.send(Keycode.ENTER)
             elif command == 'RETURN':
                 # Press the return key using the keyboard
                 keyboard.send(Keycode.ENTER)
