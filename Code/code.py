@@ -134,16 +134,24 @@ while True:
                 mouse.move(int(x), int(y))
             elif command.startswith('JUMP'):
                 # Extract the line number to jump to from the command and update the program counter
-                line_number = int(command[5:])
-                program_counter = line_number
+                jump_target = command[5:]
+                target = 0
+                for line in commands:
+                    if line == "LABEL " + jump_target:
+                        program_counter = target
+                    target += 1
                 continue
             elif command.startswith("BJUMP"):
                 # Jump if left button is pressed, usually proceeded with a SCREEN command
                 l = True
-                line_number = int(command[6:])
+                jump_target =command[6:]
                 while l == True:
                     if left_button.value:
-                        program_counter = line_number
+                        target = 0
+                        for line in commands:
+                            if line == "LABEL " + jump_target:
+                                program_counter = target
+                            target += 1
                         l = False
                         continue
                     elif right_button.value:
