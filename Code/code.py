@@ -58,7 +58,7 @@ program_counter = 0
 STATE = 0
 FILENAME = ""
 
-DELAY = 0
+DELAY = 0.1
 
 VARS = {}
 
