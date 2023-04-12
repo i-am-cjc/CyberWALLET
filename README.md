@@ -5,7 +5,9 @@ Inspired by the USB Rubber Ducky / BadUSB, but in a different formfactor that I 
 ## Hardware
 The current iteration of the CyberWALLET is a Raspberry Pi Pico, and an SSD1306 0.9inch 128x32 screen. There are two buttons on the front that will be used for menu navigation as well as interaction in scripts.
 
-INSERT PHOTO HERE
+![Alt text](photo.jpg?raw=true "Title")
+
+Multiple scripts can be loaded and then selected upon boot using the buttons on the device.
 
 ## Scripting Language
 The CyberWALLET uses a pretty simple scripting language, again inspired mostly by the Hak5 USB Rubber Ducky, but with some other stuff based around the buttons on the front of the device.
