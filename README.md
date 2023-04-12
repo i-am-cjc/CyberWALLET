@@ -29,9 +29,9 @@ The CyberWALLET uses a pretty simple scripting language, again inspired mostly b
 Here is an example script that will open up notepad on a windows computer, and write hello world.
 
 ```
-    DELAY 1
-    MOD4
-    RTYPE notepad
-    TYPE Hello World
+DELAY 1
+MOD4
+RTYPE notepad
+TYPE Hello World
 ```
 
