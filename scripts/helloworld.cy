@@ -1,8 +1,4 @@
-SLEEP 3
+DELAY 1
 MOD4
-SLEEP 1
-TYPE notepad
-SLEEP 1
-RETURN
-SLEEP 1
+RTYPE notepad
 TYPE Hello World
