@@ -19,6 +19,7 @@ The CyberWALLET uses a pretty simple scripting language, again inspired mostly b
 * RETURN - Presses Return
 * MOD4 - Presses the MOD4 / Windows key
 * MOUSE <co-ords> - Moves the Mouse by x,y
+* CLICK - Clicks the left mouse
 * SET <variable> - Sets a variable to true
 * LABEL <string> - A label in code to jump to
 * JUMP <LABEL> - Jumps to a specific label

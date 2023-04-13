@@ -141,6 +141,8 @@ while True:
                 # Extract the X and Y coordinates from the command and move the mouse cursor to that position
                 x, y = command[6:].split(',')
                 mouse.move(int(x), int(y))
+            elif command.startswith('CLICK'):
+                mouse.click(Mouse.LEFT_BUTTON)
             elif command.startswith('JUMP'):
                 # Extract the line number to jump to from the command and update the program counter
                 jump_target = command[5:]
