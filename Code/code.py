@@ -155,6 +155,10 @@ while True:
             elif command.startswith("SET"):
                 var = command[4:]
                 VARS[var] = True
+            elif command.startswith("UNSET"):
+                var = command[6:]
+                if var in VARS:
+                    del VARS[var]
             elif command.startswith("VJUMP"):
                 var, jump_target = command[6:].split(" ")
                 if var in VARS:
