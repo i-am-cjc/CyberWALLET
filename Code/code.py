@@ -69,6 +69,7 @@ while True:
         for f in os.listdir("./scripts"):
             if f.endswith('.cy'):
                 files.append(f)
+        files.sort()
         index = 0
         FILENAME = files[index]
         
