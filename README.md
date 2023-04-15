@@ -17,6 +17,7 @@ The CyberWALLET uses a pretty simple scripting language, again inspired mostly b
 * SLEEP <float> - Sleeps for the float number of seconds
 * DELAY <float> - Sets the default sleep time between commands (default: 0.1)
 * RETURN - Presses Return
+* TAB - Presses Tab
 * MOD4 - Presses the MOD4 / Windows key
 * MOUSE <co-ords> - Moves the Mouse by x,y
 * CLICK - Clicks the left mouse

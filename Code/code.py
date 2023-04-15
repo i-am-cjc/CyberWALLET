@@ -134,6 +134,8 @@ while True:
             elif command == 'RETURN':
                 # Press the return key using the keyboard
                 keyboard.send(Keycode.ENTER)
+            elif command == "TAB":
+                keyboard.send(Keycode.TAB)
             elif command == 'MOD4':
                 # Press the windows key using the keyboard
                 keyboard.press(Keycode.WINDOWS)
