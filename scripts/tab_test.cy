@@ -1,0 +1,12 @@
+DELAY 1
+SCREEN Tab Test
+MOD4
+RTYPE notepad
+SLEEP 1
+TYPE This
+TAB
+TYPE is
+TAB 
+TYPE testing
+TAB
+RTYPE Tabs
