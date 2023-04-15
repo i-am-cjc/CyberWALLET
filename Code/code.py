@@ -77,7 +77,7 @@ while True:
             splash = displayio.Group()
             
             text_area_top = label.Label(
-                terminalio.FONT, text=FILENAME, color=0xFFFFFF, x=4, y=HEIGHT // 2 - 1
+                terminalio.FONT, text=FILENAME[:-3], color=0xFFFFFF, x=4, y=HEIGHT // 2 - 1
             )
             splash.append(text_area_top)
             
