@@ -136,10 +136,19 @@ while True:
                 keyboard.send(Keycode.ENTER)
             elif command == "TAB":
                 keyboard.send(Keycode.TAB)
-            elif command == 'MOD4':
+            elif command.startswith('MOD4'):
                 # Press the windows key using the keyboard
                 keyboard.press(Keycode.WINDOWS)
+                if len(command) > 4:
+                    k = command[5:6]
+                    keyboard_layout.write(k)
                 keyboard.release(Keycode.WINDOWS)
+            elif command.startswith('CTRL'):
+                keyboard.press(Keycode.CONTROL)
+                if len(command) > 4:
+                    k = command[5:6]
+                    keyboard_layout.write(k)
+                keyboard.release(Keycode.CONTROL)
             elif command.startswith('MOUSE'):
                 # Extract the X and Y coordinates from the command and move the mouse cursor to that position
                 x, y = command[6:].split(',')
