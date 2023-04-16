@@ -1,8 +1,6 @@
 SCREEN Is this a knife?
 DELAY 1
-MOD4
-RTYPE notepad
-SLEEP 2
+INC notepad
 RTYPE Act 1
 RTYPE SCENE I. A desert place.
 RTYPE Thunder and lightning. Enter three Witches.

@@ -61,6 +61,7 @@ FILENAME = ""
 DELAY = 0.1
 
 VARS = {}
+STACK = []
 
 while True:
     VARS = {}
@@ -207,8 +208,22 @@ while True:
                 led.value = not led.value
             elif command.startswith("SCREEN"):
                 top_text = command[7:]
+            elif command.startswith("INC"):
+                f = command[4:]
+                # PC + 1 as it would otherwise include the file again, lol
+                STACK.append( (commands, program_counter + 1) )
+                program_counter = 0
+                with open("./scripts/" + f + ".cy", 'r') as file:
+                    commands = file.read().splitlines()
+                continue
 
             program_counter += 1
+
+            if program_counter >= len(commands) and len(STACK) > 0:
+                commands, program_counter = STACK.pop()
+
+
+            # Check stack
             time.sleep(DELAY)
         STATE = 0
 

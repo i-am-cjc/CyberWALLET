@@ -1,8 +1,6 @@
 DELAY 1
 SCREEN Tab Test
-MOD4
-RTYPE notepad
-SLEEP 1
+INC notepad
 TYPE This
 TAB
 TYPE is
