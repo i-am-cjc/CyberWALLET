@@ -30,6 +30,7 @@ The CyberWALLET uses a pretty simple scripting language, again inspired mostly b
 * BJUMP <target> - waits for a button press. If the left button is pressed, JUMP to target, otherwise carry on down the script.
 * REM <string> - A comment
 * SCREEN <string> - Writes the string to the internal screen, great for debugging / amusement.
+* INC <filename> - Saves the current state of the file and includes another file for command tasks. The filename should not include the .cy, variables set in one file are present throughout the others and are not cleared when switching between files.
 
 ### Hello World!
 
