@@ -1,8 +1,5 @@
 SCREEN Control Test
-MOD4 r
-SLEEP 0.5
-RTYPE notepad.exe
-SLEEP 0.5
+INC notepad
 TYPE This is testing using the control key
 SLEEP 1
 CTRL a

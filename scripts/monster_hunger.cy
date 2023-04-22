@@ -1,9 +1,6 @@
 SCREEN Monster Hunger
 DELAY 0.5
-MOD4
-SLEEP 1
-RTYPE notepad
-SLEEP 1
+INC notepad
 SCREEN Breakfast
 RTYPE You're just enjoying a Full English Breakfast at the local diner.
 RTYPE As you're paying you see a sign that says @Tips Optional@.

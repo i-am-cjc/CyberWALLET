@@ -61,6 +61,7 @@ FILENAME = ""
 DELAY = 0.1
 
 VARS = {}
+STACK = []
 
 while True:
     VARS = {}
@@ -100,6 +101,7 @@ while True:
 
         program_counter = 0
         while program_counter < len(commands):
+            need_to_sleep = False
             command = commands[program_counter]
             splash = displayio.Group()
             
@@ -120,6 +122,7 @@ while True:
                 # Extract the text to type from the command and type it using the keyboard
                 text = command[5:]
                 keyboard_layout.write(text)
+                need_to_sleep = True
             elif command.startswith('SLEEP'):
                 # Extract the sleep duration from the command and sleep for that amount of time
                 duration = float(command[6:])
@@ -131,11 +134,14 @@ while True:
                 keyboard_layout.write(text)
                 time.sleep(0.1)
                 keyboard.send(Keycode.ENTER)
+                need_to_sleep = True
             elif command == 'RETURN':
                 # Press the return key using the keyboard
                 keyboard.send(Keycode.ENTER)
+                need_to_sleep = True
             elif command == "TAB":
                 keyboard.send(Keycode.TAB)
+                need_to_sleep = True
             elif command.startswith('MOD4'):
                 # Press the windows key using the keyboard
                 keyboard.press(Keycode.WINDOWS)
@@ -143,18 +149,22 @@ while True:
                     k = command[5:6]
                     keyboard_layout.write(k)
                 keyboard.release(Keycode.WINDOWS)
+                need_to_sleep = True
             elif command.startswith('CTRL'):
                 keyboard.press(Keycode.CONTROL)
                 if len(command) > 4:
                     k = command[5:6]
                     keyboard_layout.write(k)
                 keyboard.release(Keycode.CONTROL)
+                need_to_sleep = True
             elif command.startswith('MOUSE'):
                 # Extract the X and Y coordinates from the command and move the mouse cursor to that position
                 x, y = command[6:].split(',')
                 mouse.move(int(x), int(y))
+                need_to_sleep = True
             elif command.startswith('CLICK'):
                 mouse.click(Mouse.LEFT_BUTTON)
+                need_to_sleep = True
             elif command.startswith('JUMP'):
                 # Extract the line number to jump to from the command and update the program counter
                 jump_target = command[5:]
@@ -207,8 +217,23 @@ while True:
                 led.value = not led.value
             elif command.startswith("SCREEN"):
                 top_text = command[7:]
+            elif command.startswith("INC"):
+                f = command[4:]
+                # PC + 1 as it would otherwise include the file again, lol
+                STACK.append( (commands, program_counter + 1) )
+                program_counter = 0
+                with open("./scripts/" + f + ".cy", 'r') as file:
+                    commands = file.read().splitlines()
+                continue
 
             program_counter += 1
-            time.sleep(DELAY)
+
+
+            if program_counter >= len(commands) and len(STACK) > 0:
+                commands, program_counter = STACK.pop()
+
+
+            if need_to_sleep:
+                time.sleep(DELAY)
         STATE = 0
 

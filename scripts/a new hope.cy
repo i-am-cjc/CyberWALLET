@@ -1,7 +1,6 @@
 SCREEN May the Force be with you!
 DELAY 1
-MOD4
-RTYPE notepad
+INC notepad
 RTYPE A long time ago in a galaxy far, far away...
 RTYPE It is a period of civil war.
 RTYPE Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
