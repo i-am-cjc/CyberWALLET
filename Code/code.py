@@ -47,7 +47,29 @@ keyboard = Keyboard(usb_hid.devices)
 keyboard_layout = KeyboardLayoutUS(keyboard)
 mouse = Mouse(usb_hid.devices)
 
+STATUS = "CyberWALLET"
+
+def update_screen( lines ):
+
+    line1, line2 = lines
+    splash = displayio.Group()
+                
+    # Make the display context
+    text_area = label.Label(
+        terminalio.FONT, text=line2, color=0xFFFFFF, x=4, y=HEIGHT-6
+    )
+    splash.append(text_area)
+    
+    text_area_top = label.Label(
+        terminalio.FONT, text=line1, color=0xFFFFFF, x=4, y=4
+    )
+    splash.append(text_area_top)
+    
+    display.show(splash)
+    display.refresh()
+
 def run():
+    STATUS = "CyberWALLET"
     #displayio.release_displays()
 
     # Initialize the program counter to zero
@@ -74,15 +96,7 @@ def run():
             FILENAME = files[index]
             
             while STATE == 0:
-                splash = displayio.Group()
-                
-                text_area_top = label.Label(
-                    terminalio.FONT, text=FILENAME[:-5], color=0xFFFFFF, x=4, y=HEIGHT // 2 - 1
-                )
-                splash.append(text_area_top)
-                
-                display.show(splash)
-                display.refresh()
+                update_screen( ("Choose Card:", FILENAME[:-5]))
                 if (right_button.value):
                     STATE = 1
                 elif (left_button.value):
@@ -102,21 +116,9 @@ def run():
             while program_counter < len(commands):
                 need_to_sleep = False
                 command = commands[program_counter]
-                splash = displayio.Group()
+
+                update_screen( (STATUS, str(program_counter) + " " + command))
                 
-                # Make the display context
-                text_area = label.Label(
-                    terminalio.FONT, text=str(program_counter) + " " + command, color=0xFFFFFF, x=4, y=HEIGHT-6
-                )
-                splash.append(text_area)
-                
-                text_area_top = label.Label(
-                    terminalio.FONT, text=top_text, color=0xFFFFFF, x=4, y=4
-                )
-                splash.append(text_area_top)
-                
-                display.show(splash)
-                display.refresh()
                 if command.startswith('TYPE'):
                     # Extract the text to type from the command and type it using the keyboard
                     text = command[5:]
@@ -215,7 +217,7 @@ def run():
                 elif command.startswith("LED"):
                     led.value = not led.value
                 elif command.startswith("SCREEN"):
-                    top_text = command[7:]
+                    STATUS = command[7:]
                 elif command.startswith("INC"):
                     f = command[4:]
                     # PC + 1 as it would otherwise include the file again, lol
