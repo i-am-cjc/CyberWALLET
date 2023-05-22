@@ -82,6 +82,9 @@ def run():
     VARS = {}
     STACK = []
 
+    # Track if we have already run the autorun file
+    AUTORAN = False
+
     while True:
         VARS = {}
         if STATE == 0:
@@ -93,6 +96,11 @@ def run():
             index = 0
             FILENAME = files[index]
             
+            if "autorun.card" in files and not AUTORAN:
+                FILENAME = "autorun.card"
+                STATE = 1
+                AUTORAN = True
+
             while STATE == 0:
                 update_screen( ("Choose Card:", FILENAME[:-5]))
                 if (right_button.value):
