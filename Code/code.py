@@ -47,8 +47,6 @@ keyboard = Keyboard(usb_hid.devices)
 keyboard_layout = KeyboardLayoutUS(keyboard)
 mouse = Mouse(usb_hid.devices)
 
-STATUS = "CyberWALLET"
-
 def update_screen( lines ):
 
     line1, line2 = lines
@@ -159,7 +157,6 @@ def run():
                     keyboard.release(Keycode.CONTROL)
                     need_to_sleep = True
                 elif command.startswith('MOUSE'):
-                    # Extract the X and Y coordinates from the command and move the mouse cursor to that position
                     x, y = command[6:].split(',')
                     mouse.move(int(x), int(y))
                     need_to_sleep = True
@@ -214,8 +211,6 @@ def run():
                 elif command.startswith('REM'):
                     # Do nothing for a comment
                     pass
-                elif command.startswith("LED"):
-                    led.value = not led.value
                 elif command.startswith("SCREEN"):
                     STATUS = command[7:]
                 elif command.startswith("INC"):
