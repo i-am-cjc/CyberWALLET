@@ -4,6 +4,7 @@ from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.mouse import Mouse
 import time
+import random
 
 import board
 import digitalio
@@ -136,6 +137,9 @@ def run():
                     time.sleep(duration)
                 elif command.startswith("DELAY"):
                     DELAY = float(command[6:])
+                elif command.startswith("RDELAY"):
+                    x, y = command[6:].split(',')
+                    time.sleep(random.uniform(int(x), int(y) + 1))
                 elif command.startswith("RTYPE"):
                     text = command[6:]
                     keyboard_layout.write(text)
