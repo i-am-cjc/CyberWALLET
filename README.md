@@ -1,5 +1,4 @@
 # CyberWALLET
-![Alt text](logo.jpg?raw=true "Title")
 Inspired by the USB Rubber Ducky / BadUSB, but in a different formfactor that I might actually carry and use.
 
 ## Hardware
