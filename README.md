@@ -19,7 +19,7 @@ The CyberWALLET uses a pretty simple scripting language, again inspired mostly b
 * TAB - Presses Tab
 * MOD4 <key>- Presses the MOD4 / Windows key with the optional key (i.e. "MOD4 l" would lock a windows machine)
 * CTRL <key> - Presses the control key with an optional key (i.e. "CTRL a" would select all in a lot of applications)
-* MOUSE <co-ords> - Moves the Mouse by x,y
+* MOUSE <x,y> - Moves the Mouse by x,y
 * CLICK - Clicks the left mouse
 * SET <variable> - Sets a variable to true
 * UNSET <variable> - Sets a variable to false
@@ -29,7 +29,7 @@ The CyberWALLET uses a pretty simple scripting language, again inspired mostly b
 * BJUMP <target> - waits for a button press. If the left button is pressed, JUMP to target, otherwise carry on down the script.
 * REM <string> - A comment
 * SCREEN <string> - Writes the string to the internal screen, great for debugging / amusement.
-* INC <filename> - Saves the current state of the file and includes another file for command tasks. The filename should not include the .cy, variables set in one file are present throughout the others and are not cleared when switching between files.
+* INC <filename> - Saves the current state of the file and includes another file for command tasks. The filename should not include the .card extension, variables set in one file are present throughout the others and are not cleared when switching between files.
 
 ### Hello World!
 
@@ -37,7 +37,7 @@ Here is an example script that will open up notepad on a windows computer, and w
 
 ```
 DELAY 1
-MOD4
+MOD4 r
 RTYPE notepad
 TYPE Hello World
 ```
