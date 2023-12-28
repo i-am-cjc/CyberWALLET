@@ -137,7 +137,7 @@ def run():
                     time.sleep(duration)
                 elif command.startswith("DELAY"):
                     DELAY = float(command[6:])
-                elif command.startswith("RDELAY"):
+                elif command.startswith("RSLEEP"):
                     x, y = command[6:].split(',')
                     time.sleep(random.uniform(int(x), int(y) + 1))
                 elif command.startswith("RTYPE"):

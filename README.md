@@ -14,12 +14,13 @@ The CyberWALLET uses a pretty simple scripting language, again inspired mostly b
 * TYPE <string> - Types out the string, but doesn't press enter
 * RTYPE <string> - Types out the string and presses enter (ps RType is a great game)
 * SLEEP <float> - Sleeps for the float number of seconds
+* RSLEEP <int:x>,<int:y> - Sleeps for random number of seconds between the x and y
 * DELAY <float> - Sets the default sleep time between commands (default: 0.1)
 * RETURN - Presses Return
 * TAB - Presses Tab
 * MOD4 <key>- Presses the MOD4 / Windows key with the optional key (i.e. "MOD4 l" would lock a windows machine)
 * CTRL <key> - Presses the control key with an optional key (i.e. "CTRL a" would select all in a lot of applications)
-* MOUSE <x,y> - Moves the Mouse by x,y
+* MOUSE <int:x>,<int:y> - Moves the Mouse by x,y
 * CLICK - Clicks the left mouse
 * SET <variable> - Sets a variable to true
 * UNSET <variable> - Sets a variable to false
